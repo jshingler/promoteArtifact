@@ -1,0 +1,30 @@
+platform: linux
+
+image_resource:
+  type: docker-image
+  source:
+    repository: java
+    tag: latest
+
+inputs:
+  - name: source-code
+
+outputs:
+  - name: build
+
+params:
+  URL: NOT_SET_URL
+  USERNAME: NOT_SET_USERNAME
+  PASSWORD: NOT_SET_PASSWORD
+  GROUPID: NOT_SET_GROUPID
+  ARTIFACTID: NOT_SET_ARTIFACTID
+  VERSION: NOT_SET_VERSION
+  DESTDIR: ../build
+
+run:
+  path: "source-code/ci/tasks/prepareSnapshot.sh"
+  user: root
+
+params:
+  TERM: -dumb
+  GRADLE_OPTS: -Dorg.gradle.native=false

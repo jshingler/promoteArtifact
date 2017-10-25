@@ -1,0 +1,37 @@
+resource_types:
+  - name: maven
+    type: docker-image
+    source:
+      repository: twic/maven-repo-resource
+      tag: "1"
+
+resources:
+  - name: source-code
+    type: git
+    source:
+      uri: {{GIT_REPO}}
+      branch: {{GIT_BRANCH}}
+
+jobs:
+  - name: unit-tests
+    plan:
+    - get: source-code
+      trigger: true
+    - task: run-tests
+      privileged: true
+      file: source-code/ci/tasks/unit.yml
+      params:
+        SONAR: {{SONAR}}
+    # - put: deploy-dev-app
+    #   params:
+    #     manifest: source-code/manifest.yml
+    #     path: build/spring-music.war
+    #     current_app_name: spring-music
+
+  - name: package-and-deploy
+    plan:
+    - get: source-code
+      passed: [ unit-tests ]
+      trigger: true
+    - task: package
+      file: source-code/ci/tasks/package.yml

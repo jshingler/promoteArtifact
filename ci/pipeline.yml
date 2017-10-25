@@ -1,0 +1,47 @@
+jobs:
+  - name: promote
+    plan:
+    - get: source-code
+      trigger: true
+    - task: prepareSnapshot
+      file: git-repo/ci/tasks/prepareSnapshot.yml
+      params:
+        URL: ((MAVEN_SNAPSHOT_REPO))
+        USERNAME: ((MAVEN_USERNAME))
+        PASSWORD: ((MAVEN_PASSWORD))
+        GROUPID: ((GROUPID))
+        ARTIFACTID: ((ARTIFACTID))
+        VERSION: ((VERSION))
+
+resource_types:
+- name: maven-resource
+  type: docker-image
+  source:
+    repository: pivotalpa/maven-resource
+    tag: latest
+
+resources:
+- name: artifact
+  type: maven-resource
+  source:
+    url: http://10.211.136.254:8081/repository/odt-maven-release/
+    snapshot_url: http://10.211.136.254:8081/repository/odt-maven-snapshot/
+    artifact: com.example:spring-music:jar
+    username: admin
+    password: admin123
+# - name: artifact-snapshot
+#   type: maven-resource
+#   source:
+#     url: http://10.206.43.82:8081/repository/odt-maven-release/
+#     snapshot_url: http://10.206.43.82:8081/repository/odt-maven-snapshot/
+#     artifact: com.example:spring-music
+#     username: admin
+#     password: admin123
+
+- name: source-code
+  type: git
+  source:
+      uri: ((GIT_REPO))
+      branch: ((GIT_BRANCH))
+      username: ((GIT_USERNAME))
+      password: ((GIT_PASSWORD))

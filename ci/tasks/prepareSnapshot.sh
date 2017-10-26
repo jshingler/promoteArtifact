@@ -6,7 +6,7 @@ export TERM=${TERM:-dumb}
 resource_dir=$(dirname $0)
 echo $resource_dir
 
-echo "PrepareSnapshot.sh -- Start "
+echo "PrepareSnapshot.sh -- Start $(date)"
 cd source-code
 
 url=${URL}

@@ -19,7 +19,7 @@ params:
   GROUPID: NOT_SET_GROUPID
   ARTIFACTID: NOT_SET_ARTIFACTID
   VERSION: NOT_SET_VERSION
-  DESTDIR: "../build"
+  DESTDIR: NOT_SET_DESTDIR
 
 run:
   path: "source-code/ci/tasks/prepareSnapshot.sh"

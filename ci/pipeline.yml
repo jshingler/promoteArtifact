@@ -4,7 +4,7 @@ jobs:
     - get: source-code
       trigger: true
     - task: prepareSnapshot
-      file: git-repo/ci/tasks/prepareSnapshot.yml
+      file: soruce-code/ci/tasks/prepareSnapshot.yml
       params:
         URL: ((MAVEN_SNAPSHOT_REPO))
         USERNAME: ((MAVEN_USERNAME))
@@ -21,14 +21,16 @@ resource_types:
     tag: latest
 
 resources:
-- name: artifact
-  type: maven-resource
-  source:
-    url: http://10.211.136.254:8081/repository/odt-maven-release/
-    snapshot_url: http://10.211.136.254:8081/repository/odt-maven-snapshot/
-    artifact: com.example:spring-music:jar
-    username: admin
-    password: admin123
+# - name: artifact
+#   type: maven-resource
+#   source:
+#     url: http://10.211.136.254:8081/repository/odt-maven-release/
+#     snapshot_url: http://10.211.136.254:8081/repository/odt-maven-snapshot/
+#     artifact: com.example:spring-music:jar
+#     username: admin
+#     password: admin123
+
+
 # - name: artifact-snapshot
 #   type: maven-resource
 #   source:
@@ -43,5 +45,5 @@ resources:
   source:
       uri: ((GIT_REPO))
       branch: ((GIT_BRANCH))
-      username: ((GIT_USERNAME))
-      password: ((GIT_PASSWORD))
+      # username: ((GIT_USERNAME))
+      # password: ((GIT_PASSWORD))

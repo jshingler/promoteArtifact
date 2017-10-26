@@ -28,6 +28,7 @@ if [ -n "$uniqueVersion" ]; then
 fi
 baseVersion=$(echo ${baseVersion} | sed -e s/-.*//)
 
+
 # url=http://10.210.231.83:8081/repository/odt-maven-snapshot/
 # groupID=com.example
 # artifactID=spring-music

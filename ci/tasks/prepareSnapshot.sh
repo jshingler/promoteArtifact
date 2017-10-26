@@ -40,4 +40,5 @@ echo "MAVEN_CONFIG = ${MAVEN_CONFIG}"
 
 cd $destDir
 mv ${artifactID}-${version}.jar ${artifactID}-${baseVersion}.jar
+echo "$baseVersion" > version
 echo "PrepareSnapshot.sh -- Done"

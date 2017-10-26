@@ -13,6 +13,10 @@ jobs:
         ARTIFACTID: ((ARTIFACTID))
         VERSION: ((VERSION))
         DESTDIR: ../build
+    - put: artifact
+      params:
+        file: build/spring-music-*.jar
+        version_file: build/version
 
 resource_types:
 - name: maven-resource
@@ -22,14 +26,14 @@ resource_types:
     tag: latest
 
 resources:
-# - name: artifact
-#   type: maven-resource
-#   source:
-#     url: http://10.211.136.254:8081/repository/odt-maven-release/
-#     snapshot_url: http://10.211.136.254:8081/repository/odt-maven-snapshot/
-#     artifact: com.example:spring-music:jar
-#     username: admin
-#     password: admin123
+- name: artifact
+  type: maven-resource
+  source:
+    url: ((MAVEN_REPO))
+    snapshot_url: ((MAVEN_SNAPSHOT_REPO))
+    artifact: com.example:spring-music:jar
+    username: ((MAVEN_USERNAME))
+    password: ((MAVEN_PASSWORD))
 
 
 # - name: artifact-snapshot

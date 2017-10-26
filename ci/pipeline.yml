@@ -1,8 +1,8 @@
 jobs:
   - name: promote
     plan:
+    - get: config
     - get: source-code
-      trigger: true
     - task: prepareSnapshot
       file: source-code/ci/tasks/prepareSnapshot.yml
       params:
@@ -44,7 +44,13 @@ resources:
 #     artifact: com.example:spring-music
 #     username: admin
 #     password: admin123
-
+- name: config
+  type: git
+  source:
+      uri: ((GIT_CONFIG_REPO))
+      branch: ((GIT_CONFIG_BRANCH))
+      # username: ((GIT_USERNAME))
+      # password: ((GIT_PASSWORD))
 - name: source-code
   type: git
   source:

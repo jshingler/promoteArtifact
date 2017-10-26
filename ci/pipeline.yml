@@ -12,6 +12,7 @@ jobs:
         GROUPID: ((GROUPID))
         ARTIFACTID: ((ARTIFACTID))
         VERSION: ((VERSION))
+        DESTDIR: ../build
 
 resource_types:
 - name: maven-resource

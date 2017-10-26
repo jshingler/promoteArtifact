@@ -20,7 +20,7 @@
         </repository>
         <repository>
           <id>remote-repository</id>
-          <url>${URL}</url>
+          <url>${repository.url}</url>
           <releases><enabled>true</enabled></releases>
           <snapshots><enabled>true</enabled></snapshots>
         </repository>

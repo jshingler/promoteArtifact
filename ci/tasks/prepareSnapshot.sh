@@ -5,6 +5,7 @@ set -x # print commands
 export TERM=${TERM:-dumb}
 
 echo "PrepareSnapshot.sh -- Start "
+cd source-code
 
 url=${URL}
 groupID=${GROUPID}

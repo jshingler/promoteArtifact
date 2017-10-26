@@ -3,6 +3,8 @@
 set -e # fail fast
 set -x # print commands
 export TERM=${TERM:-dumb}
+resource_dir=$(dirname $0)
+echo $resource_dir
 
 echo "PrepareSnapshot.sh -- Start "
 cd source-code
@@ -31,6 +33,9 @@ baseVersion=$(echo ${baseVersion} | sed -e s/-.*//)
 # password=admin123
 
 #mvn dependency:copy -Dartifact=com.example:spring-music:1.2.2-SNAPSHOT -DoutputDirectory=./tmp -Drepository.url=http://10.210.231.83:8081/repository/odt-maven-snapshot/ -Drepository.username=admin -Drepository.password=admin123 -Dmaven.wagon.http.ssl.insecure=true -Dmaven.wagon.http.ssl.allowall=true -Dmaven.wagon.http.ssl.ignore.validity.dates=true
+
+MAVEN_CONFIG="-s $resource_dir/.mvn/settings.xml
+echo "MAVEN_CONFIG = ${MAVEN_CONFIG}"
 ./mvnw dependency:copy -Dartifact=${groupID}:${artifactID}:${version} -DoutputDirectory=${destDir} -Drepository.url=${url} -Drepository.username=${username} -Drepository.password=${password} -Dmaven.wagon.http.ssl.insecure=true -Dmaven.wagon.http.ssl.allowall=true -Dmaven.wagon.http.ssl.ignore.validity.dates=true
 
 cd $destDir

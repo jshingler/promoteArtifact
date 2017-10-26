@@ -219,6 +219,7 @@ if $cygwin; then
 fi
 
 WRAPPER_LAUNCHER=org.apache.maven.wrapper.MavenWrapperMain
+set -x
 
 exec "$JAVACMD" \
   $MAVEN_OPTS \

@@ -21,7 +21,6 @@ if [ -n "$uniqueVersion" ]; then
 fi
 baseVersion=$(echo ${baseVersion} | sed -e s/-.*//)
 
-
 # url=http://10.210.231.83:8081/repository/odt-maven-snapshot/
 # groupID=com.example
 # artifactID=spring-music
@@ -31,7 +30,8 @@ baseVersion=$(echo ${baseVersion} | sed -e s/-.*//)
 # password=admin123
 
 #mvn dependency:copy -Dartifact=com.example:spring-music:1.2.2-SNAPSHOT -DoutputDirectory=./tmp -Drepository.url=http://10.210.231.83:8081/repository/odt-maven-snapshot/ -Drepository.username=admin -Drepository.password=admin123 -Dmaven.wagon.http.ssl.insecure=true -Dmaven.wagon.http.ssl.allowall=true -Dmaven.wagon.http.ssl.ignore.validity.dates=true
-mvnw dependency:copy -Dartifact=${groupID}:${artifactID}:${version} -DoutputDirectory=${destDir} -Drepository.url=${url} -Drepository.username=${username} -Drepository.password=${password} -Dmaven.wagon.http.ssl.insecure=true -Dmaven.wagon.http.ssl.allowall=true -Dmaven.wagon.http.ssl.ignore.validity.dates=true
+./mvnw dependency:copy -Dartifact=${groupID}:${artifactID}:${version} -DoutputDirectory=${destDir} -Drepository.url=${url} -Drepository.username=${username} -Drepository.password=${password} -Dmaven.wagon.http.ssl.insecure=true -Dmaven.wagon.http.ssl.allowall=true -Dmaven.wagon.http.ssl.ignore.validity.dates=true
+
 cd $destDir
 mv ${artifactID}-${version}.jar ${artifactID}-${baseVersion}.jar
 echo "PrepareSnapshot.sh -- Done"

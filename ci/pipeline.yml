@@ -11,7 +11,7 @@ jobs:
         PASSWORD: ((MAVEN_PASSWORD))
         GROUPID: ((GROUPID))
         ARTIFACTID: ((ARTIFACTID))
-        VERSION: ((VERSION))
+        # VERSION: ((VERSION))
         DESTDIR: ../build
     - put: artifact
       params:

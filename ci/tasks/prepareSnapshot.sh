@@ -5,13 +5,6 @@ set -x # print commands
 export TERM=${TERM:-dumb}
 
 echo "PrepareSnapshot.sh -- Start "
-URL: NOT_SET_URL
-USERNAME: NOT_SET_USERNAME
-PASSWORD: NOT_SET_PASSWORD
-GROUPID: NOT_SET_GROUPID
-ARTIFACTID: NOT_SET_ARTIFACTID
-VERSION: NOT_SET_VERSION
-DESTDIR: build
 
 url=${URL}
 groupID=${GROUPID}

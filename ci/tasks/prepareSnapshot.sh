@@ -8,11 +8,13 @@ echo $resource_dir
 
 echo "PrepareSnapshot.sh -- Start $(date)"
 cd source-code
+snapshotVersion=$(cat ../config/snapshotVersionToPromote)
 
 url=${URL}
 groupID=${GROUPID}
 artifactID=${ARTIFACTID}
-version=${VERSION}
+# version=${VERSION}
+version=${snapshotVersion}
 destDir=${DESTDIR}
 username=${USERNAME}
 password=${PASSWORD}
